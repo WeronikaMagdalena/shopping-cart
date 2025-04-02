@@ -36,7 +36,7 @@ CREATE TABLE address (
     houseNumber VARCHAR2(10),
     street VARCHAR2(100),
     city VARCHAR2(100),
-    province VARCHAR2(20),
+    province VARCHAR2(30),
     country VARCHAR2(60),
     postalCode VARCHAR2(20),
     CONSTRAINT fk_address_user FOREIGN KEY (userId) REFERENCES users(userId)
