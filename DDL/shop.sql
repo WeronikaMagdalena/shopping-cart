@@ -113,12 +113,13 @@ ALTER TABLE cart ADD CONSTRAINT unique_cart_user UNIQUE (userId);
 
 -- Triggers
 
-CREATE OR REPLACE TRIGGER trg_user_before_insert
+CREATE TRIGGER trg_user_before_insert
 BEFORE INSERT ON c##shop.users
 FOR EACH ROW
 BEGIN
    :NEW.userId := c##shop."USER_SEQ".NEXTVAL;
 END;
+/
 
 CREATE TRIGGER trg_discountCode_before_insert
 BEFORE INSERT ON c##shop.discountCode
@@ -126,6 +127,7 @@ FOR EACH ROW
 BEGIN
    :NEW.discountCodeId := c##shop."DISCOUNTCODE_SEQ".NEXTVAL;
 END;
+/
 
 CREATE TRIGGER trg_address_before_insert
 BEFORE INSERT ON c##shop.address
@@ -133,13 +135,15 @@ FOR EACH ROW
 BEGIN
    :NEW.addressId := c##shop."ADDRESS_SEQ".NEXTVAL;
 END;
+/
 
-CREATE OR REPLACE TRIGGER trg_product_before_insert
+CREATE  TRIGGER trg_product_before_insert
 BEFORE INSERT ON c##shop.product
 FOR EACH ROW
 BEGIN
    :NEW.productId := c##shop."PRODUCT_SEQ".NEXTVAL;
 END;
+/
 
 CREATE OR REPLACE TRIGGER trg_orders_before_insert
 BEFORE INSERT ON c##shop.orders
@@ -147,31 +151,36 @@ FOR EACH ROW
 BEGIN
    :NEW.orderId := c##shop."ORDER_SEQ".NEXTVAL;
 END;
+/
 
-CREATE OR REPLACE TRIGGER trg_orderItem_before_insert
+CREATE TRIGGER trg_orderItem_before_insert
 BEFORE INSERT ON c##shop.orderItem
 FOR EACH ROW
 BEGIN
    :NEW.orderItemId := c##shop."ORDERITEM_SEQ".NEXTVAL;
 END;
+/
 
-CREATE OR REPLACE TRIGGER trg_productReview_before_insert
+CREATE TRIGGER trg_productReview_before_insert
 BEFORE INSERT ON c##shop.productReview
 FOR EACH ROW
 BEGIN
    :NEW.productReviewId := c##shop."PRODUCTREVIEW_SEQ".NEXTVAL;
 END;
+/
 
-CREATE OR REPLACE TRIGGER trg_cart_before_insert
+CREATE TRIGGER trg_cart_before_insert
 BEFORE INSERT ON c##shop.cart
 FOR EACH ROW
 BEGIN
    :NEW.cartId := c##shop."CART_SEQ".NEXTVAL;
 END;
+/
 
-CREATE OR REPLACE TRIGGER trg_cartItem_before_insert
+CREATE TRIGGER trg_cartItem_before_insert
 BEFORE INSERT ON c##shop.cartItem
 FOR EACH ROW
 BEGIN
    :NEW.cartItemId := c##shop."CARTITEM_SEQ".NEXTVAL;
 END;
+/
